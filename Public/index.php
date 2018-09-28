@@ -11,4 +11,3 @@
 //echo 'test123 Hello Toral Joshi';
 //echo "Hi";
 
-include_once  index.html
