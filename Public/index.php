@@ -6,7 +6,10 @@
  * Time: 9:34 PM
  */
 
-
-echo 'myProgram';
+class main{
+    static public function start(){
+        echo "test";
+    }
+}
 
 
