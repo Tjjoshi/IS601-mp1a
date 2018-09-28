@@ -7,7 +7,6 @@
  */
 
 
-echo 'test';
-echo 'hello';
+echo 'myProgram';
 
 
