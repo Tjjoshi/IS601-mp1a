@@ -24,7 +24,22 @@ static public function start ($filename){
 
 class record
 {
-    
+    public function __construct(Array $fieldnames = null, Array $value = null)
+    {
+        
+        foreach ($record as $property => $value) {
+            $this->createProperty($property, $value);
+        }
+    }
+
+
+    public function createProperty($name, $value)
+    {
+        $this->{$name} = $value;
+        $name = '<th>' . $name . '</th>';
+        $value = '<td>' . $value . '</td>';
+
+    }
 }
 
 
