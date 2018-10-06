@@ -26,7 +26,6 @@ class record
 {
     public function __construct(Array $fieldnames = null, Array $value = null)
     {
-        
         foreach ($record as $property => $value) {
             $this->createProperty($property, $value);
         }
@@ -44,8 +43,11 @@ class record
 
 
 class recordFactory{
+    public static function create (array $fieldNames=null , array $value=null){
+        $record =new record ($fieldNames,$value);
 
-
+        return $record;
+    }
 }
 
 
