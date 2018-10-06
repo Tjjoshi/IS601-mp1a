@@ -5,32 +5,60 @@
  * Date: 9/25/18
  * Time: 9:34 PM
  */
+main::start("example.csv");
 
-main::start('example.csv');
- class main{
-static public function start ($filename){
-    $records = csv::getRecords($filename);
-    $table =html::createTable($records);
-    system::printpage($table);
+class main{
+
+    static public function start($filename){
+        $records = csv::getRecords($filename);
+        $table =html::build_table($records);
+        system::printpage($table);
+
+    }
+}
+
+class csv
+{
+    static public function getRecords($filename)
+    {
+        $file = fopen($filename,"r");
+        $fields = array();
+        $count = 0;
+
+        while(! feof($file))
+        {
+            $record = fgetcsv($file);
+            if ($count == 0) {
+                $fields = $record;
+            }
+            else
+            {
+                $records[] = recordFactory::create($fields, $record);
+            }
+            $count++;
+        }
+        fclose($file);
+        return $records;
+
+    }
+
 
 }
- }
-
- class csv {
-     public static function getRecords($filename){
-
-     }
- }
-
 class record
 {
-    public function __construct(Array $fieldnames = null, Array $value = null)
+    public function __construct(Array $fieldNames = null, Array $value = null)
     {
+        $record = array_combine($fieldNames, $value);
         foreach ($record as $property => $value) {
             $this->createProperty($property, $value);
         }
     }
 
+    public function returnArray()
+    {
+        $array = (array)$this;
+        return $array;
+    }
 
     public function createProperty($name, $value)
     {
@@ -50,18 +78,59 @@ class recordFactory{
     }
 }
 
-
 class html{
-     public static function createTable($array){
 
-     }
+   /* public static function build_table($array){
 
- }
- class system{
-     public static function printPage($page){
+        // start table
+        echo "<html>
+            <head>
+            <title> My table </title>
+            <meta charset=\"utf-8\">
+            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+            <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">
+            <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>
+            <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>
+            </head>
+             </html>";
 
-     }
+        $html.= '<table class="table table-striped">' ;
+        // header row
 
- }
+        tableHeadings($array);
+        tableData ($array);
+        // data rows
+        // foreach( $array as $key=>$value){
+
+
+
+        // finish table and return it
+
+        $html .= '</table>';
+        return $html;
+    }
+
+    public static function tableHeadings (Array $array=null){
+        $html .= '<tr>';
+        foreach($array[0] as $key=>$value){
+            $html .= '<th>' . htmlspecialchars($key) . '</th>';
+        }
+        $html .= '</tr>;
+
+    }
+    public static function tableData (Array $array=null){
+$headings=array.shift($array);
+        $html .= '<tr>';
+        foreach($headings as $key=>$value){
+            $html .= '<td>' . htmlspecialchars($value2) . '</td>';
+        }*/
+}
+
+ class system {
+    public static function printpage($page){
+ echo $page;
+    }
+}
+
 
 
