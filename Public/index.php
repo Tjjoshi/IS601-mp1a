@@ -11,8 +11,8 @@ class main{
 
     static public function start($filename){
         $records = csv::getRecords($filename);
-       $table =html::build_table($records);
-        system::printpage($table);
+       $table =html::createTable($records);
+        system::printPage($table);
 
     }
 }
@@ -24,7 +24,6 @@ class csv
         $file =fopen($filename,'r');
         $fields = array();
         $count = 0;
-
         while(! feof($file))
         {
             $record = fgetcsv($file);
@@ -54,12 +53,6 @@ class record
         }
     }
 
-    public function returnArray()
-    {
-        $array = (array)$this;
-        return $array;
-    }
-
     public function createProperty($name, $value)
     {
         $this->{$name} = $value;
@@ -80,14 +73,37 @@ class recordFactory{
 
 class html{
 
-   public static function build_table($array)
+   public static function createTable($array)
 {
+        // start table
+        $html = '<table>';
+        // header row
+        $html .= '<tr>';
+        foreach($array[0] as $key=>$value){
+            $html .= '<th>' . htmlspecialchars($key) . '</th>';
+        }
+        $html .= '</tr>';
+
+        // data rows
+        foreach( $array as $key=>$value){
+            $html .= '<tr>';
+            foreach($value as $key2=>$value2){
+                $html .= '<td>' . htmlspecialchars($value2) . '</td>';
+            }
+            $html .= '</tr>';
+        }
+
+        // finish table and return it
+
+        $html .= '</table>';
+        return $html;
+
 
 }
 }
 
  class system {
-    public static function printpage($page){
+    public static function printPage($page){
  echo $page;
     }
 }
