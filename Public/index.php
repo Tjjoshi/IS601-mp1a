@@ -5,7 +5,7 @@
  * Date: 9/25/18
  * Time: 9:34 PM
  */
-main::start("example.csv");
+main::start('myfile.csv');
 
 class main{
 
@@ -21,7 +21,7 @@ class csv
 {
     static public function getRecords($filename)
     {
-        $file =fopen('example.csv','r');
+        $file =fopen($filename,'r');
         $fields = array();
         $count = 0;
 
