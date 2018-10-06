@@ -86,7 +86,7 @@ class html{
 </head>
 </html>";
         // start table
-        $html = '<table>';
+        $html = '<table class="table table-striped">';
         // header row
         $html .= '<tr>';
         foreach($array[0] as $key=>$value){
