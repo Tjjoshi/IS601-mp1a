@@ -22,7 +22,19 @@ static public function start ($filename){
      }
  }
 
- class html{
+class record
+{
+    
+}
+
+
+class recordFactory{
+
+
+}
+
+
+class html{
      public static function createTable($array){
 
      }
@@ -34,3 +46,5 @@ static public function start ($filename){
      }
 
  }
+
+
