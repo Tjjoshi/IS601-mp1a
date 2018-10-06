@@ -21,7 +21,7 @@ class csv
 {
     static public function getRecords($filename)
     {
-        $file = fopen($filename,"r");
+        $file =fopen('example.csv','r');
         $fields = array();
         $count = 0;
 
