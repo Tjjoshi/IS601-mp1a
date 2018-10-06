@@ -6,10 +6,31 @@
  * Time: 9:34 PM
  */
 
-class main{
-    static public function start(){
-        echo "test";
-    }
-}
-main :: start();
+main::start('example.csv');
+ class main{
+static public function start ($filename){
+    $records = csv::getRecords($filename);
+    $table =html::createTable($records);
+    system::printpage($table);
 
+}
+ }
+
+ class csv {
+     public static function getRecords($filename){
+
+     }
+ }
+
+ class html{
+     public static function createTable($array){
+
+     }
+
+ }
+ class system{
+     public static function printPage($page){
+
+     }
+
+ }
