@@ -11,7 +11,7 @@ class main{
 
     static public function start($filename){
         $records = csv::getRecords($filename);
-        $table =html::build_table($records);
+       $table =html::build_table($records);
         system::printpage($table);
 
     }
@@ -80,50 +80,10 @@ class recordFactory{
 
 class html{
 
-   /* public static function build_table($array){
+   public static function build_table($array)
+{
 
-        // start table
-        echo "<html>
-            <head>
-            <title> My table </title>
-            <meta charset=\"utf-8\">
-            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
-            <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">
-            <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>
-            <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>
-            </head>
-             </html>";
-
-        $html.= '<table class="table table-striped">' ;
-        // header row
-
-        tableHeadings($array);
-        tableData ($array);
-        // data rows
-        // foreach( $array as $key=>$value){
-
-
-
-        // finish table and return it
-
-        $html .= '</table>';
-        return $html;
-    }
-
-    public static function tableHeadings (Array $array=null){
-        $html .= '<tr>';
-        foreach($array[0] as $key=>$value){
-            $html .= '<th>' . htmlspecialchars($key) . '</th>';
-        }
-        $html .= '</tr>;
-
-    }
-    public static function tableData (Array $array=null){
-$headings=array.shift($array);
-        $html .= '<tr>';
-        foreach($headings as $key=>$value){
-            $html .= '<td>' . htmlspecialchars($value2) . '</td>';
-        }*/
+}
 }
 
  class system {
